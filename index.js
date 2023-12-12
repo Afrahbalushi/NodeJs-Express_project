@@ -14,6 +14,10 @@ mongoose.connect('mongodb://localhost/crmCon');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//files
+app.use(express.static('public'));
+
+
 routes(app);
 
 app.get('/', (req, res) => 

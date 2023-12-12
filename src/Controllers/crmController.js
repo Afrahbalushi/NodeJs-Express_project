@@ -19,8 +19,19 @@ export const getContacts = async (req, res) => {
 };
 
 export const getContactWithID = async(req, res) => {
-    
+
     const contact = await Contact.findById(req.params.contactId).exec();
+    res.json(contact);
+
+};
+
+export const updateContact = async(req, res) => {
+
+    const contact = await Contact.findOneAndUpdate(
+        { _id: req.params.contactId },
+        req.body,
+        { new: true }
+         ).exec();
     res.json(contact);
 
 };

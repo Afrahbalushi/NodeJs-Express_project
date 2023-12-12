@@ -17,3 +17,10 @@ export const getContacts = async (req, res) => {
     res.json(contacts);
 
 };
+
+export const getContactWithID = async(req, res) => {
+    
+    const contact = await Contact.findById(req.params.contactId).exec();
+    res.json(contact);
+
+};

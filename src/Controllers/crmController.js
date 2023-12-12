@@ -20,7 +20,7 @@ export const getContacts = async (req, res) => {
 
 export const getContactWithID = async(req, res) => {
 
-    const contact = await Contact.findById(req.params.contactId).exec();
+    const contact = await Contact.findById(req.params.contactId);
     res.json(contact);
 
 };
@@ -35,3 +35,12 @@ export const updateContact = async(req, res) => {
     res.json(contact);
 
 };
+
+export const deleteContact = async (req, res) => {
+
+    await Contact.deleteOne({ _id: req.params.contactId }).exec();
+    res.json({ message: 'Successfully Deleted Contact'});
+
+};
+
+
